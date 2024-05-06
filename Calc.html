@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Porcentaje</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Calculadora de porcentaje</h1>
+        <h3>Ingrese el número total y el porcentaje que desea calcular</h3>
+
+        <div>
+            <label for="total">Número Total:</label>
+            <input type="number" id="total">
+        </div>
+
+        <div>
+            <label for="porcentaje">Porcentaje:</label>
+            <input type="number" id="porcentaje">
+        </div>
+
+        <button id="calcular">Calcular</button>
+
+        <label for="resultado">El resultado es:</label>
+        <div id="resultado" name="resultado"></div>
+    </div>
+
+</body>
+<script>
+    // Función para calcular el porcentaje
+    function calcularPorcentaje() {
+        // Obtener los valores ingresados por el usuario
+        var total = document.getElementById("total").value;
+        var porcentaje = document.getElementById("porcentaje").value;
+        var resultadoContainer = document.getElementById("resultado");
+
+        // Verificar si algún campo está vacío
+        if (total === "" || porcentaje === "") {
+            resultadoContainer.textContent = "Por favor complete ambos campos.";
+            return;
+        }
+
+        // Convertir los valores a números
+        total = parseFloat(total);
+        porcentaje = parseFloat(porcentaje);
+
+        // Calcular el porcentaje
+        var resultado = (total * porcentaje) / 100;
+
+        // Mostrar el resultado
+        resultadoContainer.textContent = "El resultado de: " + porcentaje + "% de " + total + " es: " + resultado;
+    }
+
+    // Obtener el botón
+    var botonCalcular = document.getElementById("calcular");
+
+    // Agregar un event listener para el evento de clic del botón
+    botonCalcular.addEventListener("click", calcularPorcentaje);
+</script>
+</body>
+
+</html>
